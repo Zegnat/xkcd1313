@@ -87,54 +87,61 @@
 			</table>
 		</div>
 		<script>
-			(function(){
-				'use strict';
-				var titles = document.getElementsByTagName('td'),
-				    input = document.getElementById('regex'),
-				    mode = document.getElementById('case'),
-				    count = document.getElementsByTagName('span')[0],
-				    tcw_c = document.getElementById('tcw'),
-				    st_c = document.getElementById('st'),
-				    t = 'textContent' in count ? 'textContent' : 'innerText',
-				    l = titles.length;
-				mode.onchange = check; mode.removeAttribute('disabled');
-				input.onkeyup = check; input.removeAttribute('disabled');
-				tcw_c.onchange = tcw_f; tcw_c.removeAttribute('disabled');
-				st_c.onchange = st_f; st_c.removeAttribute('disabled');
-				function check() {
-					var regex, solution = input.value, text;
-					count[t] = solution.length;
-					try {
-						regex = new RegExp(solution === '' ? '(?!)' : solution, mode.checked ? 'i' : '');
-						input.parentNode.className = '';
-					} catch (e) {
-						input.parentNode.className = 'has-error';
-						return;
-					}
-					for (var i=0;i<l;i++) {
-						text = titles[i][t] || '';
-						if (text.length > 0 && regex.test(text)) titles[i].className = i%2 ? 'danger' : 'success';
-						else titles[i].className = '';
-					}
-				}
-				function tcw_f() {
-					var cell = document.getElementsByTagName('td')[12];
-					cell[t] = tcw_c.checked ? 'The Clone Wars' : '';
-					check();
-				}
-				function st_f() {
-					var cell1 = document.getElementsByTagName('td')[21],
-					    cell2 = document.getElementsByTagName('td')[23];
-					if (st_c.checked) {
-						cell1[t] = 'Star Trek';
-						cell2[t] = 'Into Darkness';
-					} else {
-						cell1[t] = 'Into Darkness';
-						cell2[t] = '';
-					}
-					check();
-				}
-			})()
+			(function () {
+			    'use strict';
+			    var titles = document.getElementsByTagName('td'),
+			        input = document.getElementById('regex'),
+			        mode = document.getElementById('case'),
+			        count = document.getElementsByTagName('span')[0],
+			        tcw_c = document.getElementById('tcw'),
+			        st_c = document.getElementById('st'),
+			        t = 'textContent' in count ? 'textContent' : 'innerText',
+			        l = titles.length;
+			    function check() {
+			        var regex, solution = input.value, i, text;
+			        count[t] = solution.length;
+			        try {
+			            regex = new RegExp(solution === '' ? '(?!)' : solution, mode.checked ? 'i' : '');
+			            input.parentNode.className = '';
+			        } catch (e) {
+			            input.parentNode.className = 'has-error';
+			            return;
+			        }
+			        for (i = 0; i < l; i += 1) {
+			            text = titles[i][t] || '';
+			            if (text.length > 0 && regex.test(text)) {
+			                titles[i].className = i % 2 ? 'danger' : 'success';
+			            } else {
+			                titles[i].className = '';
+			            }
+			        }
+			    }
+			    function tcw_f() {
+			        var cell = document.getElementsByTagName('td')[12];
+			        cell[t] = tcw_c.checked ? 'The Clone Wars' : '';
+			        check();
+			    }
+			    function st_f() {
+			        var cell1 = document.getElementsByTagName('td')[21],
+			            cell2 = document.getElementsByTagName('td')[23];
+			        if (st_c.checked) {
+			            cell1[t] = 'Star Trek';
+			            cell2[t] = 'Into Darkness';
+			        } else {
+			            cell1[t] = 'Into Darkness';
+			            cell2[t] = '';
+			        }
+			        check();
+			    }
+			    mode.onchange = check;
+			    mode.removeAttribute('disabled');
+			    input.onkeyup = check;
+			    input.removeAttribute('disabled');
+			    tcw_c.onchange = tcw_f;
+			    tcw_c.removeAttribute('disabled');
+			    st_c.onchange = st_f;
+			    st_c.removeAttribute('disabled');
+			}());
 		</script>
 	</body>
 </html>
