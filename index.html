@@ -87,12 +87,13 @@
 				    input = document.getElementById('regex'),
 				    mode = document.getElementById('case'),
 				    count = document.getElementsByTagName('span')[0],
+				    t = 'textContent' in count ? 'textContent' : 'innerText',
 				    l = titles.length;
 				mode.onchange = check; mode.removeAttribute('disabled');
 				input.onkeyup = check; input.removeAttribute('disabled');
 				function check() {
 					var regex, solution = input.value, text;
-					try { count.textContent = solution.length } catch (e) { count.innerText = solution.length }
+					count[t] = solution.length;
 					try {
 						regex = new RegExp(solution === '' ? '(?!)' : solution, mode.checked ? 'i' : '');
 						input.parentNode.className = '';
@@ -101,7 +102,7 @@
 						return;
 					}
 					for (var i=0;i<l;i++) {
-						text = titles[i].textContent || titles[i].innerText || '';
+						text = titles[i][t] || '';
 						if (text.length > 0 && regex.test(text)) titles[i].className = i%2 ? 'danger' : 'success';
 						else titles[i].className = '';
 					}
