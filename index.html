@@ -4,10 +4,18 @@
 		<title>xkcd #1313: Regex Golf</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+		<style>
+			.row, .table, p {
+				margin-top: 3em;
+			}
+			.checkbox + .checkbox {
+				margin-top: 10px;
+			}
+		</style>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	</head>
 	<body>
-		<div class="container center-block" style="margin-top:3em">
+		<div class="container center-block">
 			<div class="row">
 				<form class="col-xs-12">
 					<div>
@@ -18,16 +26,16 @@
 						<div class="checkbox col-xs-4">
 							<label for="case"><input id="case" type="checkbox" checked disabled> Case Insensitive</label>
 						</div>
-						<div class="checkbox col-xs-4" style="margin-top:10px">
+						<div class="checkbox col-xs-4">
 							<label for="tcw"><input id="tcw" type="checkbox" checked disabled> The Clone Wars</label>
 						</div>
-						<div class="checkbox col-xs-4" style="margin-top:10px">
+						<div class="checkbox col-xs-4">
 							<label for="st"><input id="st" type="checkbox" checked disabled> Star Trek</label>
 						</div>
 					</div>
 				</form>
 			</div>
-			<table class="table" style="margin-top:3em">
+			<table class="table">
 				<thead>
 					<tr>
 						<th>Star Wars</th>
@@ -85,7 +93,7 @@
 					</tr>
 				</tbody>
 			</table>
-			<p class="text-muted text-center" style="margin-top:3em">
+			<p class="text-muted text-center">
 				Inspired by <a href="http://xkcd.com/1313/">xkcd #1313</a> and <a href="http://regex.alf.nu/">Regex Golf</a>. All code <a href="https://github.com/Zegnat/xkcd1313/blob/gh-pages/LICENSE">MIT Licensed</a> and <a href="https://github.com/Zegnat/xkcd1313/">available on GitHub</a>.
 			</p>
 		</div>
