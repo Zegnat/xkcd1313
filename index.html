@@ -101,7 +101,7 @@
 						return;
 					}
 					for (var i=0;i<l;i++) {
-						text = titles[i].textContent || titles[i].innerText;
+						text = titles[i].textContent || titles[i].innerText || '';
 						if (text.length > 0 && regex.test(text)) titles[i].className = i%2 ? 'danger' : 'success';
 						else titles[i].className = '';
 					}
